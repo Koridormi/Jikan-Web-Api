@@ -1,0 +1,43 @@
+{
+  "name": "jikan-web",
+  "version": "1.0.0",
+  "description": "Jikan Web - Consumiendo Jikan Api",
+  "keywords": [
+    "api",
+    "jikan",
+    "web",
+    "exercies",
+    "project"
+  ],
+  "homepage": "https://github.com/Koridormi/Jikan-Web-Api#readme",
+  "bugs": {
+    "url": "https://github.com/Koridormi/Jikan-Web-Api/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Koridormi/Jikan-Web-Api.git"
+  },
+  "license": "MIT",
+  "author": "Koridormi",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "gulp",
+    "build": "gulp build"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^29.0.3",
+    "@rollup/plugin-node-resolve": "^16.0.3",
+    "@rollup/stream": "^3.0.1",
+    "del": "^8.0.1",
+    "gulp": "^5.0.1",
+    "gulp-plumber": "^1.2.1",
+    "gulp-sass": "^6.0.1",
+    "gulp-terser": "^2.1.0",
+    "rollup": "^4.63.1",
+    "sass": "^1.103.1",
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-source-stream": "^2.0.0"
+  }
+}

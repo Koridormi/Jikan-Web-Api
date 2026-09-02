@@ -1,0 +1,41 @@
+@use 'sass:map';
+@use '../utilities/variables' as var;
+
+html {
+    font-size: 62.5%; /* 1rem = 10px */
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+/* Globales */
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-size: 1.6rem; /* 1rem = 10px -- de manera natural es 1rem = 16px */
+    font-family: var.$fuentePrincipal;
+    line-height: 1.6; /* Mejora la legibilidad en móviles */
+    background-color: map.get(var.$colores, 'fondo');
+    /* Footer Debajo */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+/* Evita Scroll Horizontal */
+html, body {
+    max-width: 100%;
+}
+body {
+    overflow-x: hidden;
+}
+body.no-scroll {
+    overflow-y: hidden;
+}
+main {
+    flex: 1;
+}
+footer {
+    margin-top: auto;
+}

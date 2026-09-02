@@ -1,0 +1,33 @@
+// Mixins
+@use '../utilities/variables' as var;
+
+@mixin tablet {
+    @media (min-width: var.$tablet) {
+        @content;
+    }
+}
+@mixin laptop {
+    @media (min-width: var.$laptop) {
+        @content;
+    }
+}
+@mixin desktop {
+    @media (min-width: var.$desktop) {
+        @content;
+    }
+}
+@mixin desktopXL {
+    @media (min-width: var.$desktopXL) {
+        @content;
+    }
+}
+
+// Contenedor
+@mixin contenedor {
+    @media (max-width: var.$desktop) {
+        width: 95%;
+        max-width: 120rem;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
+}
