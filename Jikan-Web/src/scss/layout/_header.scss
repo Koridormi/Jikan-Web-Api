@@ -4,3 +4,65 @@
 @use '../utilities/mixins' as mix;
 
 // Header
+.site__header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    padding: 1.2rem 1.6rem;
+    background-color: rgba(7, 8, 22, 0.86);
+    border-bottom: 0.1rem solid rgba(155, 92, 255, 0.24);
+    backdrop-filter: blur(1.6rem);
+
+    @include mix.tablet {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 1.4rem 3.2rem;
+    }
+
+    @include mix.desktop {
+        padding-inline: max(3.2rem, calc((100% - 120rem) / 2));
+    }
+}
+
+.header__div {
+    width: min(100%, 25rem);
+
+    img {
+        width: 100%;
+    }
+}
+
+.header__nav ul {
+    display: flex;
+    gap: 0.8rem;
+
+    a {
+        display: flex;
+        align-items: center;
+        min-height: 4.4rem;
+        padding: 0.8rem 1.4rem;
+        color: map.get(var.$colores, 'tipografia-secundaria');
+        font-weight: 700;
+        border: 0.1rem solid transparent;
+        border-radius: 999rem;
+        transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease;
+
+        &:hover,
+        &:focus-visible,
+        &[aria-current='page'] {
+            color: map.get(var.$colores, 'tipografia');
+            background-color: rgba(155, 92, 255, 0.14);
+            border-color: rgba(155, 92, 255, 0.38);
+        }
+
+        &:focus-visible {
+            outline: 0.2rem solid map.get(var.$colores, 'focus');
+            outline-offset: 0.3rem;
+        }
+    }
+}

@@ -1,3 +1,3 @@
-import {obtener} from './home/home.js';
+import {obtenerDatos} from './home/home.js';
 
-obtener();
+obtenerDatos();

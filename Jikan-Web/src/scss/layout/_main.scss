@@ -4,3 +4,133 @@
 @use '../utilities/mixins' as mix;
 
 // Main
+.main__section {
+    display: flex;
+    flex-direction: column;
+    width: min(100% - 3.2rem, 120rem);
+    margin: 0 auto;
+    padding: 3.2rem 0 5rem;
+
+    @include mix.tablet {
+        padding-top: 4.8rem;
+    }
+
+    .section__h1 {
+        margin-bottom: 2.8rem;
+        font-size: clamp(2.8rem, 7vw, 5.4rem);
+        line-height: 1.05;
+        letter-spacing: -0.04em;
+        text-wrap: balance;
+        background: linear-gradient(105deg, map.get(var.$colores, 'tipografia') 25%, #c7a7ff 60%, #ff78bc);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .section__div {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 2rem;
+
+        @include mix.tablet {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        @include mix.laptop {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        @include mix.desktop {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+    }
+}
+
+.animeCard {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-rows: auto 1fr auto;
+    align-items: end;
+    overflow: hidden;
+    min-width: 0;
+    background: linear-gradient(145deg, rgba(26, 28, 56, 0.96), rgba(13, 15, 35, 0.96));
+    border: 0.1rem solid map.get(var.$colores, 'borde');
+    border-radius: 1.8rem;
+    box-shadow: 0 1.8rem 4rem rgba(0, 0, 0, 0.24);
+    transition: transform 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+
+    &:hover {
+        transform: translateY(-0.4rem);
+        border-color: rgba(255, 79, 163, 0.52);
+        box-shadow: 0 2.2rem 5rem rgba(0, 0, 0, 0.38);
+    }
+
+    img {
+        grid-column: 1 / -1;
+        grid-row: 1;
+        width: 100%;
+        aspect-ratio: 3 / 4;
+        object-fit: cover;
+    }
+
+    .animeTitle {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        align-self: start;
+        padding: 1.8rem 1.8rem 1rem;
+        font-size: 2rem;
+        line-height: 1.3;
+        text-wrap: balance;
+    }
+
+    .animeRating,
+    .animeEpisodes {
+        padding: 0 1.8rem 1.8rem;
+        color: map.get(var.$colores, 'tipografia-secundaria');
+        font-size: 1.4rem;
+    }
+
+    .animeRating {
+        color: #ffd36a;
+        font-weight: 700;
+    }
+
+    .animeEpisodes {
+        text-align: right;
+    }
+}
+
+// Main | About Me
+.section__div--about {
+    width: 100%;
+
+    > h2 {
+        grid-column: 1 / -1;
+        color: map.get(var.$colores, 'secundario');
+        font-size: 2.4rem;
+    }
+
+    > div {
+        color: map.get(var.$colores, 'tipografia');
+        padding: 2.4rem;
+        background: linear-gradient(145deg, rgba(26, 28, 56, 0.96), rgba(13, 15, 35, 0.96));
+        border: 0.1rem solid map.get(var.$colores, 'borde');
+        border-radius: 1.8rem;
+
+        h3 {
+            margin-bottom: 1rem;
+            font-size: 1.9rem;
+            line-height: 1.35;
+        }
+
+        p {
+            color: map.get(var.$colores, 'tipografia-secundaria');
+        }
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .animeCard {
+        transition: none;
+    }
+}

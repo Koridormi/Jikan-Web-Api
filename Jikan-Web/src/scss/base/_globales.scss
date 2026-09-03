@@ -12,12 +12,18 @@ html {
 * {
     margin: 0;
     padding: 0;
+    text-decoration: none;
+    list-style: none;
 }
 body {
     font-size: 1.6rem; /* 1rem = 10px -- de manera natural es 1rem = 16px */
     font-family: var.$fuentePrincipal;
     line-height: 1.6; /* Mejora la legibilidad en móviles */
-    background-color: map.get(var.$colores, 'fondo');
+    color: map.get(var.$colores, 'tipografia');
+    background:
+        radial-gradient(circle at 8% 4%, rgba(155, 92, 255, 0.18), transparent 28rem),
+        radial-gradient(circle at 92% 34%, rgba(255, 79, 163, 0.12), transparent 30rem),
+        map.get(var.$colores, 'fondo');
     /* Footer Debajo */
     min-height: 100vh;
     display: flex;
@@ -38,4 +44,18 @@ main {
 }
 footer {
     margin-top: auto;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+a {
+    color: inherit;
+}
+
+::selection {
+    color: map.get(var.$colores, 'tipografia');
+    background-color: map.get(var.$colores, 'secundario');
 }

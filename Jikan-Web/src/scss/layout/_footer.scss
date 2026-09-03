@@ -4,3 +4,12 @@
 @use '../utilities/mixins' as mix;
 
 // Footer
+.site__footer {
+    display: flex;
+    justify-content: center;
+    padding: 2.4rem 1.6rem;
+    color: map.get(var.$colores, 'tipografia-secundaria');
+    font-size: 1.4rem;
+    background-color: rgba(7, 8, 22, 0.72);
+    border-top: 0.1rem solid rgba(155, 92, 255, 0.18);
+}
