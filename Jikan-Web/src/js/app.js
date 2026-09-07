@@ -1,3 +1,9 @@
-import {obtenerDatos} from './home/home.js';
+import {obtenerDatos, crearCardLoading} from './home/home.js';
 
-obtenerDatos();
+// document.addEventListener('DOMContentLoaded', crearCardLoading);
+// document.addEventListener('DOMContentLoaded', obtenerDatos);
+
+document.addEventListener('DOMContentLoaded', () => {
+    crearCardLoading();
+    obtenerDatos();
+});

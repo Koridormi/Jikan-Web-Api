@@ -100,37 +100,114 @@
     }
 }
 
+.loadingCard {
+    grid-column: 1 / -1;
+    display: grid;
+    place-items: center;
+    gap: 1.6rem;
+    min-height: clamp(18rem, 35vh, 30rem);
+    padding: 3.2rem;
+    background: linear-gradient(145deg, rgba(26, 28, 56, 0.9), rgba(13, 15, 35, 0.82));
+    border: 0.1rem solid map.get(var.$colores, 'borde');
+    border-radius: 1.8rem;
+    box-shadow: inset 0 0 4rem rgba(155, 92, 255, 0.06);
+
+    &::before {
+        content: '';
+        width: 4.8rem;
+        aspect-ratio: 1;
+        border: 0.4rem solid rgba(248, 247, 255, 0.14);
+        border-top-color: map.get(var.$colores, 'secundario');
+        border-right-color: map.get(var.$colores, 'primario');
+        border-radius: 50%;
+        animation: loadingSpin 850ms linear infinite;
+    }
+
+    p {
+        color: map.get(var.$colores, 'tipografia-secundaria');
+        font-weight: 700;
+        letter-spacing: 0.04em;
+    }
+}
+
+@keyframes loadingSpin {
+    to {
+        transform: rotate(1turn);
+    }
+}
+
 // Main | About Me
-.section__div--about {
+.main__section .section__div--about {
     width: 100%;
+    max-width: 96rem;
+    margin-inline: auto;
+    align-items: start;
+
+    @include mix.tablet {
+        grid-template-columns: minmax(22rem, 0.78fr) minmax(0, 1.22fr);
+        gap: 2.4rem;
+    }
+
+    @include mix.laptop {
+        gap: 3.2rem;
+    }
 
     > h2 {
         grid-column: 1 / -1;
+        display: flex;
+        align-items: center;
+        gap: 1.2rem;
         color: map.get(var.$colores, 'secundario');
-        font-size: 2.4rem;
+        font-size: clamp(2.4rem, 4vw, 3.2rem);
+        line-height: 1.2;
+
+        &::after {
+            content: '';
+            flex: 1;
+            height: 0.1rem;
+            background: linear-gradient(90deg, rgba(255, 79, 163, 0.55), transparent);
+        }
     }
 
     > div {
+        position: relative;
+        overflow: hidden;
         color: map.get(var.$colores, 'tipografia');
-        padding: 2.4rem;
+        padding: 2.2rem;
         background: linear-gradient(145deg, rgba(26, 28, 56, 0.96), rgba(13, 15, 35, 0.96));
         border: 0.1rem solid map.get(var.$colores, 'borde');
         border-radius: 1.8rem;
+        box-shadow: 0 1.8rem 4rem rgba(0, 0, 0, 0.2);
+
+        @include mix.tablet {
+            padding: 2.8rem;
+        }
+
+        &:first-of-type {
+            border-color: rgba(155, 92, 255, 0.42);
+        }
+
+        &:last-of-type {
+            border-color: rgba(255, 79, 163, 0.32);
+        }
 
         h3 {
-            margin-bottom: 1rem;
-            font-size: 1.9rem;
+            margin-bottom: 1.2rem;
+            font-size: 2rem;
             line-height: 1.35;
         }
 
         p {
             color: map.get(var.$colores, 'tipografia-secundaria');
+            line-height: 1.75;
         }
     }
 }
 
 @media (prefers-reduced-motion: reduce) {
+    .loadingCard::before,
     .animeCard {
+        animation: none;
         transition: none;
     }
 }

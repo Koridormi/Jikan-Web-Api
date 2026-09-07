@@ -13,6 +13,14 @@ function obtenerDatos() {
             for (const anime of animes) {
                 crearCard(anime.title, anime.images.jpg.large_image_url, anime.score, anime.episodes);
             };
+        })
+        .then( () => {
+            const loading = document.querySelector('.loadingCard');
+            loading.remove();
+        })
+        .catch( () => {
+            const loading = document.querySelector('.loadingCard');
+            loading.textContent = 'Error al Cargar los Datos';
         });
 };
 
@@ -32,7 +40,7 @@ function crearCard(title, src, rating, episodes) {
 
     const animeRating = document.createElement('P');
     animeRating.classList.add('animeRating');
-    animeRating.textContent = `⭐ Rating: ${rating} / 10 ⭐`;
+    animeRating.textContent = rating !== null ? `⭐ Rating: ${rating} / 10 ⭐` : `Rating: N/A`;
 
     const animeEpisodes = document.createElement('P');
     animeEpisodes.classList.add('animeEpisodes');
@@ -46,4 +54,16 @@ function crearCard(title, src, rating, episodes) {
     animeCard.appendChild(animeEpisodes);
 };
 
-export {obtenerDatos};
+function crearCardLoading() {
+    const loadingCard = document.createElement('DIV');
+    const loadingText = document.createElement('P');
+
+    loadingCard.classList.add('loadingCard');
+    // Atributos HTML
+    loadingText.textContent = 'Cargando...';
+
+    loadingCard.appendChild(loadingText);
+    sectionDiv.appendChild(loadingCard);
+};
+
+export {obtenerDatos, crearCardLoading};
